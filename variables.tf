@@ -86,11 +86,6 @@ variable "runners_gitlab_url" {
   type        = "string"
 }
 
-variable "runners_clone_url" {
-  description = "Overwrite the default URL used to clone or fetch the git ref."
-  type        = "string"
-}
-
 variable "runners_token" {
   description = "Token for the runner, will be used in the runner config.toml"
   type        = "string"
@@ -195,4 +190,14 @@ variable "tags" {
 variable "allow_iam_service_linked_role_creation" {
   description = "Attach policy to runner instance to create service linked roles."
   default     = true
+}
+
+variable "git_proxy_host" {
+  description = "Proxy host for git."
+  type        = "string"
+}
+
+variable "git_proxy_port" {
+  description = "Proxy port for git."
+  type        = "string"
 }

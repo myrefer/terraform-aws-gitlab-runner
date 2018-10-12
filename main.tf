@@ -95,8 +95,10 @@ data "template_file" "runners" {
   vars {
     aws_region  = "${var.aws_region}"
     gitlab_url  = "${var.runners_gitlab_url}"
-    clone_url   = "${var.runners_clone_url}"
     environment = "${var.environment}"
+
+    git_proxy_host = "${var.git_proxy_host}"
+    git_proxy_port = "${var.git_proxy_port}"
 
     runners_vpc_id              = "${var.vpc_id}"
     runners_subnet_id           = "${var.subnet_id_runners}"
@@ -130,7 +132,6 @@ data "template_file" "register" {
   vars {
     aws_region  = "${var.aws_region}"
     gitlab_url  = "${var.runners_gitlab_url}"
-    clone_url   = "${var.runners_clone_url}"
     environment = "${var.environment}"
 
     runners_vpc_id              = "${var.vpc_id}"
