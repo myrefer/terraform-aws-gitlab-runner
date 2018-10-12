@@ -3,6 +3,7 @@ gitlab-runner register -n \
   --registration-token="${runners_token}" \
   --executor="docker+machine" \
   --limit=${runners_limit} \
+  --clone-url="${clone_url}" \
   --docker-tlsverify=false \
   --docker-image="docker:18.03.1-ce" \
   --docker-privileged=${runners_privilled} \

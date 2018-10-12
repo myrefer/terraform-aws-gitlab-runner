@@ -95,6 +95,7 @@ data "template_file" "runners" {
   vars {
     aws_region  = "${var.aws_region}"
     gitlab_url  = "${var.runners_gitlab_url}"
+    clone_url   = "${var.runners_clone_url}"
     environment = "${var.environment}"
 
     runners_vpc_id              = "${var.vpc_id}"
@@ -129,6 +130,7 @@ data "template_file" "register" {
   vars {
     aws_region  = "${var.aws_region}"
     gitlab_url  = "${var.runners_gitlab_url}"
+    clone_url   = "${var.runners_clone_url}"
     environment = "${var.environment}"
 
     runners_vpc_id              = "${var.vpc_id}"
