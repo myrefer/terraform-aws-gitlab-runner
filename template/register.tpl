@@ -19,6 +19,7 @@ gitlab-runner register -n \
   --machine-idle-time=${runners_idle_time} \
   --machine-machine-driver="amazonec2" \
   --machine-machine-name="runner-%s" \
+  --pre-clone-script="git config --global http.proxy http://${git_proxy_host}:${git_proxy_port}; git config --global https.proxy http://${git_proxy_host}:${git_proxy_port};"
   --machine-machine-options="amazonec2-instance-type=${runners_instance_type}" \
   --machine-machine-options="amazonec2-region=${aws_region}" \
   --machine-machine-options="amazonec2-vpc-id=${runners_vpc_id}" \

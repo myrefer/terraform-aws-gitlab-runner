@@ -21,6 +21,13 @@ resource "aws_security_group" "runner" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = "${git_proxy_port}"
+    to_port     = "${git_proxy_port}"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = "${local.tags}"
 }
 
@@ -96,6 +103,9 @@ data "template_file" "runners" {
     aws_region  = "${var.aws_region}"
     gitlab_url  = "${var.runners_gitlab_url}"
     environment = "${var.environment}"
+
+    git_proxy_host = "${var.git_proxy_host}"
+    git_proxy_port = "${var.git_proxy_port}"
 
     runners_vpc_id              = "${var.vpc_id}"
     runners_subnet_id           = "${var.subnet_id_runners}"
