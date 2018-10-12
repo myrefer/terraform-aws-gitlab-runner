@@ -1,4 +1,5 @@
 mkdir -p /etc/gitlab-runner
+
 cat > /etc/gitlab-runner/config.toml <<- EOF
 
 ${runners_config}
@@ -12,6 +13,16 @@ curl -L https://github.com/docker/machine/releases/download/v${docker_machine_ve
   cp /tmp/docker-machine /usr/local/bin/docker-machine && \
   ln -s /usr/local/bin/docker-machine /usr/bin/docker-machine
 
-
 service gitlab-runner restart
 chkconfig gitlab-runner on
+
+cat > /etc/gitlab-runner/register.sh <<- EOF
+#!/usr/bin/env bash
+set -x
+
+${runners_register}
+
+EOF
+
+chmod +x /etc/gitlab-runner/register.sh
+/etc/gitlab-runner/register.sh
