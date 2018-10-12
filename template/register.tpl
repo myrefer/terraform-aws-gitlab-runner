@@ -5,7 +5,7 @@ gitlab-runner register -n \
   --limit=${runners_limit} \
   --docker-tlsverify=false \
   --docker-image="docker:18.03.1-ce" \
-  --docker-privileged=${runners_privilled} } \
+  --docker-privileged=${runners_privilled} \
   --docker-disable-cache=false \
   --docker-volumes="/cache" \
   --docker-shm-size=0 \
