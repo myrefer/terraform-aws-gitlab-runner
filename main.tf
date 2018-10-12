@@ -21,6 +21,13 @@ resource "aws_security_group" "runner" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+    from_port   = "${git_proxy_port}"
+    to_port     = "${git_proxy_port}"
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
   tags = "${local.tags}"
 }
 
